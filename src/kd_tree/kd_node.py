@@ -8,6 +8,3 @@ class KD_Node:
     self.parent = None
     self.point = point
     self.cd = cutting_dimension
-
-  def __eq__(self, other):
-    return self.point == other.point
