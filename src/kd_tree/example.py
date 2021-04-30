@@ -9,3 +9,7 @@ for i in range(len(nodes_to_insert)):
 
 # Print the resultant tree (level by level)
 kdt.showTree()
+
+node_to_search = (70, 70)
+
+print(kdt.search(node_to_search))
