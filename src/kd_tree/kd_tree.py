@@ -1,3 +1,5 @@
+import math
+import bisect
 from kd_node import KD_Node
 
 class KD_Tree:
@@ -32,6 +34,44 @@ class KD_Tree:
         #print(f'            ({parent_aux.point}) -> {point}\n')     # For debug
 
 
+  def k_nearest_neighbors(self, point, k=1):
+    stack = [self.root]
+    nearst_neighs = []
+    nearst_dists = []
+
+    while len(stack) != 0:
+      node = stack.pop()
+      distance = self.get_distance(node.point, point)
+
+      if len(nearst_dists) < k or distance < nearst_dists[-1]:
+        # Se obtiene el indice para ingresarlo ordenado en las listas
+        index = bisect.bisect(nearst_dists, distance)
+        nearst_dists.insert(index, distance)
+        nearst_neighs.insert(index, node)
+
+      # Si se supero el limite de vecinos se elimina el ultimo
+      if len(nearst_dists) > k:
+        nearst_dists.pop()
+        nearst_neighs.pop()
+
+      distance_branch = abs(node.point[node.cd] - point[node.cd])
+
+      if node.point[node.cd] > point[node.cd]:
+        if node.left != None:
+          stack.append(node.left)
+
+        if distance_branch < nearst_dists[-1] and node.right != None:
+          stack.append(node.right)
+      else:
+        if node.right != None:
+          stack.append(node.right)
+
+        if distance_branch < nearst_dists[-1] and node.left != None:
+          stack.append(node.left)
+
+    return nearst_neighs
+      
+
   def search(self, point):
     return KD_Tree.searchNode(self.root, point)
 
@@ -47,6 +87,13 @@ class KD_Tree:
     else:
       return cls.searchNode(node.right, point)
 
+
+  def get_distance(self, point_one, point_two):
+    distance = 0.0
+    for i in range(len(point_one)):
+      distance = distance + (point_two[i] - point_one[i]) ** 2
+
+    return math.sqrt(distance)
 
   def showTree(self):
     queue = [self.root]
