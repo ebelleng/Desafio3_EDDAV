@@ -9,6 +9,9 @@ class KD_Tree:
 
 
   def insert(self, point):
+    if len(point) != self.D:
+      raise ValueError(f'Dimension of the tree ({self.D}) does not coincide with the point ({len(point)})')
+
     if self.root == None:
       self.root = KD_Node(point, 0)
     else:
@@ -35,6 +38,9 @@ class KD_Tree:
 
 
   def k_nearest_neighbors(self, point, k=1):
+    if len(point) != self.D:
+      raise ValueError(f'Dimension of the tree ({self.D}) does not coincide with the point ({len(point)})')
+
     stack = [self.root]
     nearst_neighs = []
     nearst_dists = []
@@ -73,6 +79,9 @@ class KD_Tree:
       
 
   def search(self, point):
+    if len(point) != self.D:
+      raise ValueError(f'Dimension of the tree ({self.D}) does not coincide with the point ({len(point)})')
+
     return KD_Tree.searchNode(self.root, point)
 
 
@@ -89,6 +98,9 @@ class KD_Tree:
 
 
   def get_distance(self, point_one, point_two):
+    if len(point_one) != len(point_two):
+      raise ValueError(f'Dimension dont match')
+
     distance = 0.0
     for i in range(len(point_one)):
       distance = distance + (point_two[i] - point_one[i]) ** 2
