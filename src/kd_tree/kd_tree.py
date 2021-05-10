@@ -8,12 +8,12 @@ class KD_Tree:
     self.D = dimensions
 
 
-  def insert(self, point):
+  def insert(self, point, id_obj=None):
     if len(point) != self.D:
       raise ValueError(f'Dimension of the tree ({self.D}) does not coincide with the point ({len(point)})')
 
     if self.root == None:
-      self.root = KD_Node(point, 0)
+      self.root = KD_Node(id_obj, point, 0)
     else:
       parent_aux = self.root
       aux = self.root
@@ -26,7 +26,7 @@ class KD_Tree:
         else:
           aux = aux.right
 
-      new_node = KD_Node(point, (parent_aux.cd + 1) % self.D)
+      new_node = KD_Node(id_obj, point, (parent_aux.cd + 1) % self.D)
       new_node.parent = parent_aux
 
       if parent_aux.point[parent_aux.cd] > point[parent_aux.cd]:

@@ -6,7 +6,7 @@ nodes_to_insert = [(30,40), (5,25), (10,12), (70,70), (50,30), (35,45)]
 #nodes_to_insert = [(1,1), (-2,1), (3,-1), (1,4), (-5,1), (-1,6)]
 
 for i in range(len(nodes_to_insert)):
-  kdt.insert(nodes_to_insert[i])
+  kdt.insert(nodes_to_insert[i], i)
 
 # Print the resultant tree (level by level)
 #kdt.showTree()
@@ -18,4 +18,4 @@ point = (0, 0)
 knn = kdt.k_nearest_neighbors(point, 4)
 
 for i in range(len(knn)):
-  print(knn[i].point)
+  print(knn[i].point, knn[i].id)
