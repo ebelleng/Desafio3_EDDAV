@@ -1,13 +1,13 @@
 # Estructuras espaciales
 
-Si hicieramos un pequeño recorrido de historia, debemos mencionar el origen de lo que hoy se conoce como el oro negro del siglo XXI: _los datos_.
-Para entender como esta pequeña unidad de información se ha convertido en lo más cotizado en estos días, debemos conocer su origen y su creciente evolución.
+Para entender el objetivo de estas estructuras, debemos mencionar el origen de lo que hoy se conoce como el oro negro del siglo XXI: _los datos_.
+Para entender como esta pequeña unidad de información se ha convertido en lo más cotizado en estos días, debemos conocer su historia y creciente evolución.
 
 ## El internet de las cosas
 
-Este termino aparece por primera vez en 1999, cuando un profesor del MIT usó la expresión de forma publica por primera vez, desde entonces ha tenido un crecimiento de forma exponencial. Pero, ¿a qué se refiere? Básicamente es conectar todos los objetos con los cuales interactuamos y que existen en nuestro planeta. Es decir, que tengan una dirección IP  (Protocolo  de  Internet)  para  que  puedan  generar  información  y  transferir  datos  mediante la red, sin la intervención de los seres humanos o de la interacción personas-computadoras.
+Este término aparece por primera vez en 1999, cuando un profesor del MIT usó la expresión de forma publica por primera vez, desde entonces ha tenido un crecimiento de forma exponencial. Pero, ¿a qué se refiere? Básicamente es conectar todos los objetos con los cuales interactuamos y que existen en nuestro planeta. Es decir, que tengan una dirección IP  (Protocolo  de  Internet)  para  que  puedan  generar  información  y  transferir  datos  mediante la red, sin la intervención de los seres humanos.
 
-Una de las consecuencias de esta nueva tendencia es la generación de grandes volumenes de datos. El 90% de los datos en servidores de todo el mundo se han creado en los últimos años y por eso aparece con tanta fuerza el termino _Big Data_.
+Una de las consecuencias de esta nueva tendencia es la generación de grandes volúmenes de datos. El 90% de los datos en servidores de todo el mundo se han creado en los últimos años y por eso aparece con tanta fuerza el termino _Big Data_.
 
 ## Big data
 
@@ -37,15 +37,15 @@ Se ha decidido implementar la estructura espacial KD Tree con el nodo raíz y la
         
 #### Métodos
 
-Para insertar los nodos en el arbol, se implementó la siguiente función, la cual busca la posición segun las coordenadas (point) del vector y lo insserta donde corresponde.
+Para insertar los nodos en el árbol, se implementó la siguiente función, la cual busca la posición según las coordenadas (point) del vector y lo inserta donde corresponde.
     
     def insert(self, point, id_obj=None):
 
-Para buscar los vecinos más cercanos se utiliza esta función que recibe un vector y genera los _k_ vecinos más prometedores (que recibe como parametro) según la distancia entre ellos.
+Para buscar los vecinos más cercanos se utiliza esta función que recibe un vector y genera los _k_ vecinos más prometedores (que recibe como parámetro) según la distancia entre ellos.
 
     def k_nearest_neighbors(self, point, k=1):
 
-Para buscar un nodo en el arbol se utiliza esta función, la cual recorre el arbol hasta encontrar el vector ingresado por parametro.
+Para buscar un nodo en el árbol se utiliza esta función, la cual recorre el árbol hasta encontrar el vector ingresado por parámetro.
 
     def search(self, point):
     
@@ -94,7 +94,7 @@ Una vez implementado nuestra estructura espacial, se trabajó en el formato de l
 
 ### Elección del set de datos
 
-Para este desafío se encontró un dataset sobre peliculas con el siguiente formato:
+Para este desafío se encontró un dataset sobre película con el siguiente formato:
 
     >> print(df_movies.columns)
     
@@ -106,8 +106,8 @@ A continuación se detalla los campos que llamaron más la atención por su pont
 
 | Campo          | Descripción                                                           |
 |----------------|-----------------------------------------------------------------------|
-| **'Rank'**     | Corresponde al id de cada pelicula                                    |
-| **'Title'**    | Corresponde al nombre o titulo de la pelicula                         |
+| **'Rank'**     | Corresponde al id de cada película                                    |
+| **'Title'**    | Corresponde al nombre o titulo de la película                         |
 | **'Genre'**    | Es una lista de los generos que categorizan al video separado por ',' |
 | **'Director'** | Corresponde al director del film                                      |
 | **'Actors'**   | Es una lista de los actores que conforman el reparto                  |
@@ -118,15 +118,17 @@ A continuación se detalla los campos que llamaron más la atención por su pont
 
 De los atributos seleccionados anteriormente se tomaron las siguientes decisiones:
 
-* El 'Rank' se utilizará como identificador de la pelicula, se insertará en la estructura nodo. 
-* El 'Title' se descartó ya que no se considera util a la hora de generar una distancia espacial.
-* El 'Genre' se puede incluir en el vector ya que los generos son finitos y agrupables entre ellos.
-* El 'Director' se consideró para incluir en el vector ya que existe una preferencia por peliculas dirigidas por la misma persona.
-* El 'Actors' se trabajará de igual manera que 'Genre' ya que existen preferencias por peliculas de cierto actor
+* El 'Rank' se utilizará como identificador de la película, se insertará en la estructura nodo. 
+* El 'Title' se descartó ya que no se considera útil a la hora de generar una distancia espacial.
+* El 'Genre' se puede incluir en el vector ya que los géneros son finitos y agrupables entre ellos.
+* El 'Director' se consideró para incluir en el vector ya que existe una preferencia por películas dirigidas por la misma persona.
+* El 'Actors' se trabajará de igual manera que 'Genre' ya que existen preferencias por películas de cierto actor
 * El 'Votes' se descartará para la generación del vector ya que no tiene sentido una distancia espacial entre estos elementos.
-* El 'Rating' se agregó al vector ya que una pelicula bien evaluada, generará en los usuarios buscar peliculas así. También se puede ver que si una pelicula tiene bajo rating, significa que está más cerca en distancia que una de alto rating, por lo tanto puede considerarse perfectamente como un atributo a incluir.
+* El 'Rating' se agregó al vector ya que una película bien evaluada, generará en los usuarios buscar película así. También se puede ver que si una película tiene bajo rating, significa que está más cerca en distancia que una de alto rating, por lo tanto puede considerarse perfectamente como un atributo a incluir.
 
-La transformación de las listas de elementos como generos y actores se realizó en el siguiente [archivo](/src/dataset/ETL.ipynb). Se utilizó un jypiter notebook para mostrar de forma grafica la transformación del dataframe y el formato de salida. 
+La transformación de las listas de elementos como géneros y actores se realizó en el siguiente [archivo](/src/dataset/ETL.ipynb). Se utilizó un jypiter notebook para mostrar de forma gráfica la transformación del dataframe y el formato de salida. 
 
 ### Funciones para trabajar vector
+
+En el [archivo](/src/dataset/dataset.py) encontramos el archivo con las funciones principales para generar y operar los vectores.
 
