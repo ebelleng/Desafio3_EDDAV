@@ -37,7 +37,7 @@ class KD_Tree:
         #print(f'            ({parent_aux.point}) -> {point}\n')     # For debug
 
 
-  def k_nearest_neighbors(self, point, k=1):
+  def k_nearest_neighbors(self, point, k=1, same_vector=False):
     if len(point) != self.D:
       raise ValueError(f'Dimension of the tree ({self.D}) does not coincide with the point ({len(point)})')
 
@@ -50,10 +50,11 @@ class KD_Tree:
       distance = self.get_distance(node.point, point)
 
       if len(nearst_dists) < k or distance < nearst_dists[-1]:
-        # Se obtiene el indice para ingresarlo ordenado en las listas
-        index = bisect.bisect(nearst_dists, distance)
-        nearst_dists.insert(index, distance)
-        nearst_neighs.insert(index, node)
+        if point != node.point or same_vector == True:
+          # Se obtiene el indice para ingresarlo ordenado en las listas
+          index = bisect.bisect(nearst_dists, distance)
+          nearst_dists.insert(index, distance)
+          nearst_neighs.insert(index, node)
 
       # Si se supero el limite de vecinos se elimina el ultimo
       if len(nearst_dists) > k:

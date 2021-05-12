@@ -14,7 +14,7 @@ for i in range(len(nodes_to_insert)):
 node_to_search = (70, 70)
 print(kdt.search(node_to_search))
 
-point = (0, 0)
+point = (35, 45)
 knn = kdt.k_nearest_neighbors(point, 4)
 
 for i in range(len(knn)):
