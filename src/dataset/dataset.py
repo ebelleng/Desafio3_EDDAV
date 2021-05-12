@@ -1,7 +1,7 @@
 import pandas as pd
 
 def create_df():
-    df_movies = pd.read_csv("./dataset/movies.csv")
+    df_movies = pd.read_csv("dataset/movies.csv")
     return df_movies
 
 def generate_points(df_movies):
@@ -19,7 +19,6 @@ def search_byId( df , id ):
 
 def print_byId(df, id):
     movie = df[ df["Rank"] == id ]
-    #print(movie["Title"].values[0] )
     print(f'{movie["Rank"].values[0]}: {movie["Title"].values[0]}')
 
 def generate_points_byVector(df_movies, director, lista_generos, lista_actores):
