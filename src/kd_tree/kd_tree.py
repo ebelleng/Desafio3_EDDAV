@@ -1,6 +1,6 @@
 import math
 import bisect
-from kd_node import KD_Node
+from .kd_node import KD_Node
 
 class KD_Tree:
   def __init__(self, dimensions):
