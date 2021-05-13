@@ -165,4 +165,23 @@ En el [archivo](/src/dataset/dataset.py) encontramos la implementación de las f
             return df_vector[ df_vector["Rank"] == id].values.tolist()
            
             
-            
+## Conclusión
+
+blabla
+
+## Co-evaluación
+
+| Nombre  | Décimas                         | Aspecto positivo                                        | Aspecto negativo                                              |
+|---------|---------------------------------|---------------------------------------------------------|---------------------------------------------------------------|
+| Etienne | Axel	+0                      | Buena iniciativa                                        | Habla poco                                                    |
+|         | Amanda	+0                      | Describe bien sus ideas                                 | Muy tímida                                                    |
+|         | Dan		+0                      | Proactivo, Resposable                                   | Poco reflexivo                                                |
+| Dan     | Etienne	+0                      | Buena iniciativa	 Puntual Proactiva	                  | Le cuesta explicarse Escasa iniciativa Clarificar mejor ideas |
+|         | Amanda	+0                      | Describe bien sus ideas                                 | Muy tímida                                                    |
+|         | Axel    +0                      | Redacta bonito                                          | Escasa iniciativa                                             |
+| Axel    | Etienne	+0                      | Buena iniciativa Da ideas claras Organizado             | Le cuesta explicarse Habla poco Habla poco                    |
+|         | Amanda	+0                      | Describe bien sus ideas                                 | Muy tímida                                                    |
+|         | Dan		+0                      | Redacta bonito                                          | Escasa iniciativa                                             |
+| Amanda  | Axel	+0                      | Buena iniciativa Puntual Proactivo                      | Habla poco Le cuesta explicarse Habla poco                    |
+|         | Etienne	+0                      | Describe bien sus ideas                                 | Muy tímida                                                    |
+|         | Dan		+0                      | Redacta bonito                                          | Escasa iniciativa                                             |
