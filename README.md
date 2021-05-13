@@ -13,7 +13,7 @@ Una de las consecuencias de esta nueva tendencia es la generación de grandes vo
 
 Cuando hablamos de Big Data nos referimos a conjuntos de datos o combinaciones de conjuntos de datos cuyo tamaño (volumen), complejidad (variabilidad) y velocidad de crecimiento (velocidad) dificultan su captura, gestión, procesamiento o análisis mediante tecnologías y herramientas convencionales, tales como bases de datos relacionales y estadísticas convencionales o paquetes de visualización, dentro del tiempo necesario para que sean útiles. 
 
-Para agilizar las consultas, se han implementado nuevas estructuras de datos, entre ellas los arboles binarios. En particular, para este desafío utilizaremos el KD tree, un arbol diseñado como Metodo de Acceso a Puntos (PAMs) y que sentí las bases para importantes ideas que varios Métodos de Acceso Espacial (SAMs) han utilizado posteriormente.
+Para agilizar las consultas, se han implementado nuevas estructuras de datos, entre ellas los arboles binarios. En particular, para este desafío utilizaremos el KD tree, un arbol diseñado como Metodo de Acceso a Puntos (PAMs) y que sienta las bases para importantes ideas que varios Métodos de Acceso Espacial (SAMs) han utilizado posteriormente.
 
 ## KD Tree
 
