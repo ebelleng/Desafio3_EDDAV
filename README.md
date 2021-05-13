@@ -163,6 +163,26 @@ En el [archivo](/src/dataset/dataset.py) encontramos la implementación de las f
         def generate_points_byId(df_movies, id):
             df_vector = vectorizar_df(df_movies)
             return df_vector[ df_vector["Rank"] == id].values.tolist()
+            
+* En la siguiente función se ingresa por parametros el director, una lista de actores, otra de generos y el rating de una película. Se inicializa un vector de ceros y se agrupan todos lo ingresado por parámetro en una lista llamada datos, y para cada elemento de esta lista se comprueba si existe una columna en el dataframe del vector, si existe entonces se cambia el valor de su posición en el vector a 1. Una vez comprobado todos los datos, se asigna el rating (corresponde a la ultima opsición del vector y se retorna este.
+
+        def generate_points_byVector(df_vector, director, actors, genres, rating):
+            datos = [director] + actors + genres
+
+            vector = [0 for i in range(df_vector.shape[1] - 1)]
+            list_columns = df_vector.columns.to_list()
+
+            for dato in datos:
+                index = list_columns.index(dato)
+
+                if -1 == index:
+                    raise ValueError(f'{dato} no encontrado')
+
+                vector[index - 1] = 1
+
+            vector[-1] = rating
+
+            return vector
            
             
 ## Conclusión
@@ -178,12 +198,12 @@ Finalmente se entiende que estos problemas tienen buenas soluciones si el dato e
 | Etienne | Axel	+0                      | Buena iniciativa                                        | Habla poco                                                    |
 |         | Amanda	+0                      | Describe bien sus ideas                                 | Muy tímida                                                    |
 |         | Dan		+0                      | Proactivo, Resposable                                   | Poco reflexivo                                                |
-| Dan     | Etienne	+0                      | Redacta bien el README	                              | Demasiado reflexiva                                           |
-|         | Amanda	+0                      | Puntual                                                 | Habla mucho                                                   |
-|         | Axel    +0                      | Buena iniciativa                                        | Falta redactar mejor                                          |
-| Axel    | Etienne	+0                      | Buena iniciativa                                        | Pesimista consigo misma                                       |
-|         | Amanda	+0                      | Buena disposicion                                       | Habla poco                                                    |
-|         | Dan		+0                      | Bueno programando                                       | Habla poco                                                    |
-| Amanda  | Axel	+0                      | Buena iniciativa                                        | Habla poco                                                    |
-|         | Etienne	+0                      | Buena iniciativa                                        | Habla mucho                                                   |
-|         | Dan		+0                      | Bueno Programando, responsable                          | Habla poco                                                    |
+| Dan     | Etienne	+0                      | Redacta bien el README	                  | Demasiado reflexiva                                          |
+|         | Amanda	+0                      | Puntual                                 | Habla mucho                                                    |
+|         | Axel    +0                      | Buena iniciativa                                          | Falta redactar mejor                                            |
+| Axel    | Etienne	+0                      | Buena iniciativa Da ideas claras Organizado             | Habla poco Habla poco                                         |
+|         | Amanda	+0                      | Describe bien sus ideas                                 | Muy tímida                                                    |
+|         | Dan		+0                      | Redacta bonito                                          | Escasa iniciativa                                             |
+| Amanda  | Axel	+0                      | Buena iniciativa Puntual Proactivo                      | Habla poco                                                    |
+|         | Etienne	+0                      | Describe bien sus ideas                                 | Muy tímida                                                    |
+|         | Dan		+0                      | Redacta bonito                                          | Escasa iniciativa                                             |
