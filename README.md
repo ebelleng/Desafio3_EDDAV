@@ -191,6 +191,10 @@ A raíz del creciente volumen de datos que se ha desarrollado en los ultimos añ
 
 Finalmente se entiende que estos problemas tienen buenas soluciones si el dato está en un espacio vectorial de baja dimensión. La complejidad de la mayoría de las técnicas existentes crecen exponencialmente con la dimensión, aunque superan a los tiempos de las bases de datos tradicionales. 
 
+## Video explicativo
+
+En el siguiente [enlace](https://drive.google.com/drive/folders/1wba5xU6Vxsnw4ErjPSv5UahXJ6_DYCvc?usp=sharing) se puede encontrar un video explicativo del proyecto.
+
 ## Co-evaluación
 
 | Nombre  | Décimas                         | Aspecto positivo                                        | Aspecto negativo                                              |
