@@ -1,4 +1,4 @@
-# Estructuras espaciales
+# Estructuras de Datos Espaciales
 
 Para entender el objetivo de estas estructuras, debemos mencionar el origen de lo que hoy se conoce como el oro negro del siglo XXI: _los datos_.
 Para entender como esta pequeña unidad de información se ha convertido en lo más cotizado en estos días, debemos conocer su historia y creciente evolución.
@@ -11,11 +11,13 @@ Una de las consecuencias de esta nueva tendencia es la generación de grandes vo
 
 ## Big data
 
-Cuando hablamos de Big Data nos referimos a conjuntos de datos o combinaciones de conjuntos de datos cuyo tamaño (volumen), complejidad (variabilidad) y velocidad de crecimiento (velocidad) dificultan su captura, gestión, procesamiento o análisis mediante tecnologías y herramientas convencionales, tales como bases de datos relacionales y estadísticas convencionales o paquetes de visualización, dentro del tiempo necesario para que sean útiles.
+Cuando hablamos de Big Data nos referimos a conjuntos de datos o combinaciones de conjuntos de datos cuyo tamaño (volumen), complejidad (variabilidad) y velocidad de crecimiento (velocidad) dificultan su captura, gestión, procesamiento o análisis mediante tecnologías y herramientas convencionales, tales como bases de datos relacionales y estadísticas convencionales o paquetes de visualización, dentro del tiempo necesario para que sean útiles. 
+
+Para agilizar las consultas, se han implementado nuevas estructuras de datos, entre ellas los arboles binarios. En particular, para este desafío utilizaremos el KD tree, un arbol diseñado como Metodo de Acceso a Puntos (PAMs) y que sentí las bases para importantes ideas que varios Métodos de Acceso Espacial (SAMs) han utilizado posteriormente.
 
 ## KD Tree
 
-Se ha decidido implementar la estructura espacial KD Tree con el nodo raíz y la dimensión del vector que se almacenará en el nodo.
+Se ha decidido implementar la estructura espacial KD Tree con el nodo raíz y la dimensión del vector que se almacenará en el nodo. Esta estructura trata de mantener la noción de un árbol binario, pero cortando el espacio usando un sólo hiperplano ortogonal y en cada nivel del árbol varia el eje de corte.
 
     class KD_Tree:
         def __init__(self, dimensions):
