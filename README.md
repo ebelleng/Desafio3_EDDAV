@@ -1,4 +1,4 @@
-# Estructuras espaciales
+# Estructuras de Datos Espaciales
 
 Para entender el objetivo de estas estructuras, debemos mencionar el origen de lo que hoy se conoce como el oro negro del siglo XXI: _los datos_.
 Para entender como esta pequeña unidad de información se ha convertido en lo más cotizado en estos días, debemos conocer su historia y creciente evolución.
@@ -11,16 +11,18 @@ Una de las consecuencias de esta nueva tendencia es la generación de grandes vo
 
 ## Big data
 
-Cuando hablamos de Big Data nos referimos a conjuntos de datos o combinaciones de conjuntos de datos cuyo tamaño (volumen), complejidad (variabilidad) y velocidad de crecimiento (velocidad) dificultan su captura, gestión, procesamiento o análisis mediante tecnologías y herramientas convencionales, tales como bases de datos relacionales y estadísticas convencionales o paquetes de visualización, dentro del tiempo necesario para que sean útiles.
+Cuando hablamos de Big Data nos referimos a conjuntos de datos o combinaciones de conjuntos de datos cuyo tamaño (volumen), complejidad (variabilidad) y velocidad de crecimiento (velocidad) dificultan su captura, gestión, procesamiento o análisis mediante tecnologías y herramientas convencionales, tales como bases de datos relacionales y estadísticas convencionales o paquetes de visualización, dentro del tiempo necesario para que sean útiles. 
+
+Para agilizar las consultas, se han implementado nuevas estructuras de datos, entre ellas los arboles binarios. En particular, para este desafío utilizaremos el KD tree, un arbol diseñado como Metodo de Acceso a Puntos (PAMs) y que sentí las bases para importantes ideas que varios Métodos de Acceso Espacial (SAMs) han utilizado posteriormente.
 
 ## KD Tree
 
-Se ha decidido implementar la estructura espacial KD Tree con el nodo raíz y la dimensión del vector que se almacenará en el nodo.
+Se ha decidido implementar la estructura espacial KD Tree con el nodo raíz y la dimensión del vector que se almacenará en el nodo. Esta estructura trata de mantener la noción de un árbol binario, pero cortando el espacio usando un sólo hiperplano ortogonal y en cada nivel del árbol varia el eje de corte.
 
     class KD_Tree:
-    def __init__(self, dimensions):
-      self.root = None
-      self.D = dimensions
+        def __init__(self, dimensions):
+          self.root = None
+          self.D = dimensions
       
 #### Nodo
  
@@ -41,9 +43,9 @@ Para insertar los nodos en el árbol, se implementó la siguiente función, la c
     
     def insert(self, point, id_obj=None):
 
-Para buscar los vecinos más cercanos se utiliza esta función que recibe un vector y genera los _k_ vecinos más prometedores (que recibe como parámetro) según la distancia entre ellos.
+Para buscar los vecinos más cercanos se utiliza esta función que recibe un vector y genera los _k_ vecinos más prometedores (que recibe como parámetro) según la distancia entre ellos. El parametro _same_vector_ se utiliza para diferenciar el vector de él mismo y que no se incluya dentro de la solución. 
 
-    def k_nearest_neighbors(self, point, k=1):
+    def k_nearest_neighbors(self, point, k=1, same_vector=False):
 
 Para buscar un nodo en el árbol se utiliza esta función, la cual recorre el árbol hasta encontrar el vector ingresado por parámetro.
 
@@ -130,5 +132,58 @@ La transformación de las listas de elementos como géneros y actores se realiz�
 
 ### Funciones para trabajar vector
 
-En el [archivo](/src/dataset/dataset.py) encontramos el archivo con las funciones principales para generar y operar los vectores.
+En el [archivo](/src/dataset/dataset.py) encontramos la implementación de las funciones principales para generar y operar los vectores.
 
+* En la siguiente función se importa el archivo csv a un dataframe
+
+        def create_df():
+            df_movies = pd.read_csv("./dataset/movies.csv")
+            return df_movies
+            
+* La siguiente función recibe el dataframe con el formato inicial (el importado desde el csv) y genera el vector con los pasos explicados en la sección del ETL.
+
+        def vectorizar_df(df_movies):
+            # Generar dummies para genero, director y actores
+            df_genre = df_movies["Genre"].str.get_dummies(sep=',')
+            df_director = df_movies["Director"].str.get_dummies(sep=',')
+            df_actors = df_movies["Actors"].str.get_dummies(sep=',')
+
+            # Guardamos en dataframe para generar un vector
+            df_vector = pd.concat( [df_movies["Rank"], df_genre, df_director, df_actors, df_movies["Rating"] ], axis=1 )
+            return df_vector
+            
+* Esta función es la encargada de recibir un dataframe, lo convierte en vector y lo retorna en formato de lista donde el primer elemento es el id de la película. 
+
+        def generate_points(df_movies):
+            df_vector = vectorizar_df(df_movies)
+            return df_vector.values.tolist()
+            
+* En esta función se busca una película en el dataframe y se vectoriza, retornando una lista de los datos
+
+        def generate_points_byId(df_movies, id):
+            df_vector = vectorizar_df(df_movies)
+            return df_vector[ df_vector["Rank"] == id].values.tolist()
+           
+            
+## Conclusión
+
+A raíz del creciente volumen de datos que se ha desarrollado en los ultimos años, se ha expuesto la necesidad de buscar otras estructuras para el manejor de datos. Entre ellas, encontramos el KD Tree, un árbol de complejidad O (k * lg (n)), donde _k_ corresponde a la cantidad de vecinos más cercanos (knn) y _n_ la altura. Este tipo de árboles no funcionan demasiado bien en altas dimensiones (donde hay que visitar multiples ramas de los árboles), para nuestras pruebas (1000 registros de peliculas y un vector de ~3000 columnas) obtuvimos buenos tiempos de respuesta.
+
+Finalmente se entiende que estos problemas tienen buenas soluciones si el dato esta en un espacio vectorial de baja dimensión. La complejidad de la mayoría de las técnicas existentes crecen exponencialmente con la dimensión, aunque superan a los tiempos de las bases de datos tradicionales. 
+
+## Co-evaluación
+
+| Nombre  | Décimas                         | Aspecto positivo                                        | Aspecto negativo                                              |
+|---------|---------------------------------|---------------------------------------------------------|---------------------------------------------------------------|
+| Etienne | Axel	+0                      | Buena iniciativa                                        | Habla poco                                                    |
+|         | Amanda	+0                      | Describe bien sus ideas                                 | Muy tímida                                                    |
+|         | Dan		+0                      | Proactivo, Resposable                                   | Poco reflexivo                                                |
+| Dan     | Etienne	+0                      | Buena iniciativa	 Puntual Proactiva	                  | Le cuesta explicarse Escasa iniciativa Clarificar mejor ideas |
+|         | Amanda	+0                      | Describe bien sus ideas                                 | Muy tímida                                                    |
+|         | Axel    +0                      | Redacta bonito                                          | Escasa iniciativa                                             |
+| Axel    | Etienne	+0                      | Buena iniciativa Da ideas claras Organizado             | Le cuesta explicarse Habla poco Habla poco                    |
+|         | Amanda	+0                      | Describe bien sus ideas                                 | Muy tímida                                                    |
+|         | Dan		+0                      | Redacta bonito                                          | Escasa iniciativa                                             |
+| Amanda  | Axel	+0                      | Buena iniciativa Puntual Proactivo                      | Habla poco Le cuesta explicarse Habla poco                    |
+|         | Etienne	+0                      | Describe bien sus ideas                                 | Muy tímida                                                    |
+|         | Dan		+0                      | Redacta bonito                                          | Escasa iniciativa                                             |
