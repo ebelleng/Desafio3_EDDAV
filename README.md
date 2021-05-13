@@ -204,6 +204,6 @@ Finalmente se entiende que estos problemas tienen buenas soluciones si el dato e
 | Axel    | Etienne	+0                      | Buena iniciativa             | Pesimista consigo misma                                         |
 |         | Amanda	+0                      | Buena disposicion                               | Habla poco                                                    |
 |         | Dan		+0                      | Programa bien                                          | Habla poco                                           |
-| Amanda  | Axel	+0                      | Buena iniciativa Puntual Proactivo                      | Habla poco                                                    |
-|         | Etienne	+0                      | Describe bien sus ideas                                 | Muy tímida                                                    |
-|         | Dan		+0                      | Redacta bonito                                          | Escasa iniciativa                                             |
+| Amanda  | Axel	+0                      | Buena disposicion                      | Habla poco                                                    |
+|         | Etienne	+0                      | Describe bien sus ideas                                 | Habla bastatnte                                                  |
+|         | Dan		+0                      | Buen programador                                      | Escasa iniciativa                                             |
