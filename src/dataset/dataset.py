@@ -21,9 +21,24 @@ def print_byId(df, id):
     movie = df[ df["Rank"] == id ]
     print(f'{movie["Rank"].values[0]}: {movie["Title"].values[0]}')
 
-def generate_points_byVector(df_movies, director, lista_generos, lista_actores):
+def generate_points_byVector(df_vector, director, actors, genres, votes, rating):
+    datos = [director] + actors + genres
 
-    return
+    vector = [0 for i in range(df_vector.shape[1] - 1)]
+    list_columns = df_vector.columns.to_list()
+
+    for dato in datos:
+        index = list_columns.index(dato)
+
+        if -1 == index:
+            raise ValueError(f'{dato} no encontrado')
+
+        vector[index - 1] = 1
+
+    vector[-2] = votes
+    vector[-1] = rating
+
+    return vector
 
 def vectorizar_df(df_movies):
     # Generar dummies para genero, director y actores

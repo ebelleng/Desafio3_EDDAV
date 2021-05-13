@@ -29,16 +29,21 @@ for movie in knn:
     i += 1
 
 # Mostrar 10 knn por vector ingresado por teclado
-print("Ingrese datos para los siguientes atributos")
+print("Ingrese datos para los siguientes atributos: ")
 print("Ingrese genero de la pelicula (si es más de uno separe por comas): ", end='')
 lista_generos = list(map(str.strip, input().split(',')))
 print("Ingrese actor(es) de la pelicula (si es más de uno separe por comas): ", end='')
 lista_actores = list(map(str.strip, input().split(',')))
 print("Ingrese director de peliculas: ", end='')
 director = input()
+print("Ingrese el rating: ", end='')
+rating = float(input())
+print("Ingrese la cantidad de votos: ", end='')
+votes = int(input())
 
-point = ds.generate_points_byVector(df, director, lista_generos, lista_actores)
-knn = kdt.k_nearest_neighbors(point[0][1:], 10)
+df_vector = ds.vectorizar_df(df)
+point = ds.generate_points_byVector(df_vector, director, lista_generos, lista_actores, votes, rating)
+knn = kdt.k_nearest_neighbors(point, 10)
 i=1
 print("Top 10 aplicaciones más parecidas a las ingresadas por el usuario")
 for movie in knn:

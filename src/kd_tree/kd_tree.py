@@ -67,13 +67,13 @@ class KD_Tree:
         if node.left != None:
           stack.append(node.left)
 
-        if distance_branch < nearst_dists[-1] and node.right != None:
+        if len(nearst_dists) > 0 and distance_branch < nearst_dists[-1] and node.right != None:
           stack.append(node.right)
       else:
         if node.right != None:
           stack.append(node.right)
 
-        if distance_branch < nearst_dists[-1] and node.left != None:
+        if len(nearst_dists) > 0 and distance_branch < nearst_dists[-1] and node.left != None:
           stack.append(node.left)
 
     return nearst_neighs
