@@ -38,11 +38,9 @@ print("Ingrese director de peliculas: ", end='')
 director = input()
 print("Ingrese el rating: ", end='')
 rating = float(input())
-print("Ingrese la cantidad de votos: ", end='')
-votes = int(input())
 
 df_vector = ds.vectorizar_df(df)
-point = ds.generate_points_byVector(df_vector, director, lista_generos, lista_actores, votes, rating)
+point = ds.generate_points_byVector(df_vector, director, lista_generos, lista_actores, rating)
 knn = kdt.k_nearest_neighbors(point, 10)
 i=1
 print("Top 10 aplicaciones más parecidas a las ingresadas por el usuario")
