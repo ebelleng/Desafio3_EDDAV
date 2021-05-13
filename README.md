@@ -180,10 +180,10 @@ Finalmente se entiende que estos problemas tienen buenas soluciones si el dato e
 |         | Dan		+0                      | Proactivo, Resposable                                   | Poco reflexivo                                                |
 | Dan     | Etienne	+0                      | Redacta bien el README	                  | Demasiado reflexiva                                          |
 |         | Amanda	+0                      | Puntual                                 | Habla mucho                                                    |
-|         | Axel    +0                      | Buena iniciativa                                          | Falta redactar mejor                                            |
-| Axel    | Etienne	+0                      | Buena iniciativa Da ideas claras Organizado             | Habla poco Habla poco                                         |
-|         | Amanda	+0                      | Describe bien sus ideas                                 | Muy tímida                                                    |
-|         | Dan		+0                      | Redacta bonito                                          | Escasa iniciativa                                             |
+|         | Axel    +0                      | Buena iniciativa                                        | Falta redactar mejor                                          |
+| Axel    | Etienne	+0                      | Buena iniciativa                                        | Pesimista consigo misma                                       |
+|         | Amanda	+0                      | Buena disposicion                                       | Habla poco                                                    |
+|         | Dan		+0                      | Bueno programando                                       | Habla poco                                                    |
 | Amanda  | Axel	+0                      | Buena iniciativa Puntual Proactivo                      | Habla poco                                                    |
 |         | Etienne	+0                      | Describe bien sus ideas                                 | Muy tímida                                                    |
 |         | Dan		+0                      | Redacta bonito                                          | Escasa iniciativa                                             |
