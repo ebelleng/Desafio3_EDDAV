@@ -13,7 +13,7 @@ Una de las consecuencias de esta nueva tendencia es la generación de grandes vo
 
 Cuando hablamos de Big Data nos referimos a conjuntos de datos o combinaciones de conjuntos de datos cuyo tamaño (volumen), complejidad (variabilidad) y velocidad de crecimiento (velocidad) dificultan su captura, gestión, procesamiento o análisis mediante tecnologías y herramientas convencionales, tales como bases de datos relacionales y estadísticas convencionales o paquetes de visualización, dentro del tiempo necesario para que sean útiles. 
 
-Para agilizar las consultas, se han implementado nuevas estructuras de datos, entre ellas los arboles binarios. En particular, para este desafío utilizaremos el KD tree, un arbol diseñado como Metodo de Acceso a Puntos (PAMs) y que sienta las bases para importantes ideas que varios Métodos de Acceso Espacial (SAMs) han utilizado posteriormente.
+Para agilizar las consultas, se han implementado nuevas estructuras de datos, entre ellas los arboles binarios. En particular, para este desafío utilizaremos el KD tree, un arbol diseñado como Metodo de Acceso a Puntos (PAMs) y que sentí las bases para importantes ideas que varios Métodos de Acceso Espacial (SAMs) han utilizado posteriormente.
 
 ## KD Tree
 
@@ -167,7 +167,9 @@ En el [archivo](/src/dataset/dataset.py) encontramos la implementación de las f
             
 ## Conclusión
 
-blabla
+A raíz del creciente volumen de datos que se ha desarrollado en los ultimos años, se ha expuesto la necesidad de buscar otras estructuras para el manejor de datos. Entre ellas, encontramos el KD Tree, un árbol de complejidad O (k * lg (n)), donde _k_ corresponde a la cantidad de vecinos más cercanos (knn) y _n_ la altura. Este tipo de árboles no funcionan demasiado bien en altas dimensiones (donde hay que visitar multiples ramas de los árboles), para nuestras pruebas (1000 registros de peliculas y un vector de ~3000 columnas) obtuvimos buenos tiempos de respuesta.
+
+Finalmente se entiende que estos problemas tienen buenas soluciones si el dato esta en un espacio vectorial de baja dimensión. La complejidad de la mayoría de las técnicas existentes crecen exponencialmente con la dimensión, aunque superan a los tiempos de las bases de datos tradicionales. 
 
 ## Co-evaluación
 
