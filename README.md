@@ -190,24 +190,3 @@ En el [archivo](/src/dataset/dataset.py) encontramos la implementación de las f
 A raíz del creciente volumen de datos que se ha desarrollado en los ultimos años, se ha expuesto la necesidad de buscar otras estructuras para el manejo de datos. Entre ellas, encontramos el KD Tree, un árbol de complejidad O (k * lg (n)), donde _k_ corresponde a la cantidad de vecinos más cercanos (knn) y _n_ la altura. Este tipo de árboles no funcionan demasiado bien en altas dimensiones (donde hay que visitar multiples ramas de los árboles), para nuestras pruebas (1000 registros de peliculas y un vector de ~3000 columnas) obtuvimos buenos tiempos de respuesta.
 
 Finalmente se entiende que estos problemas tienen buenas soluciones si el dato está en un espacio vectorial de baja dimensión. La complejidad de la mayoría de las técnicas existentes crecen exponencialmente con la dimensión, aunque superan a los tiempos de las bases de datos tradicionales. 
-
-## Video explicativo
-
-En el siguiente [enlace](https://drive.google.com/drive/folders/1wba5xU6Vxsnw4ErjPSv5UahXJ6_DYCvc?usp=sharing) se puede encontrar un video explicativo del proyecto.
-
-## Co-evaluación
-
-| Nombre  | Décimas                         | Aspecto positivo                                        | Aspecto negativo                                              |
-|---------|---------------------------------|---------------------------------------------------------|---------------------------------------------------------------|
-| Etienne | Axel	+0                      | Buena iniciativa                                        | Habla poco                                                    |
-|         | Amanda	+0                      | Describe bien sus ideas                                 | Muy tímida                                                    |
-|         | Dan		+0                      | Proactivo, Resposable                                   | Poco reflexivo                                                |
-| Dan     | Etienne	+0                      | Redacta bien el README	                  | Demasiado reflexiva                                          |
-|         | Amanda	+0                      | Puntual                                 | Habla mucho                                                    |
-|         | Axel    +0                      | Buena iniciativa                                          | Falta redactar mejor                                            |
-| Axel    | Etienne	+0                      | Buena iniciativa             | Pesimista consigo misma                                         |
-|         | Amanda	+0                      | Buena disposicion                               | Habla poco                                                    |
-|         | Dan		+0                      | Programa bien                                          | Habla poco                                           |
-| Amanda  | Axel	+0                      | Buena disposicion                      | Habla poco                                                    |
-|         | Etienne	+0                      | Describe bien sus ideas                                 | Habla bastatnte                                                  |
-|         | Dan		+0                      | Buen programador                                      | Escasa iniciativa                                             |
